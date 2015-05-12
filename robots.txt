@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /backend/
+Disallow: /controle/
+Disallow: /core/
+Disallow: /modelo/
+Disallow: /plugins/
+

@@ -1,0 +1,23 @@
+Options +Includes -Indexes
+Options +FollowSymLinks
+
+# Inicio EamApp
+RewriteEngine On
+RewriteBase /framework/
+
+# isso serve para usar o phpthumb site.com.br/miniatura/caminhodaimagem, o caminho da imagem começa da raiz do site
+RewriteRule ^miniatura/(.*)$ core/phpthumb/phpthumb.php?src=../../$1 [L] 
+RewriteRule ^miniatura-externa/(.*)$ core/phpthumb/phpthumb.php?src=http://$1 [L] 
+
+RewriteRule ^index\.php$ - [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA] 
+
+# Paginas de erros personalizadas
+ErrorDocument 403 /br/erro/403
+ErrorDocument 404 /br/erro/404
+
+# Fim EamApp
